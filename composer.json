@@ -21,8 +21,6 @@
             "role": "developer"
         }
     ],
-    "version": "103",
-    "time": "2017-11-11",
     "require": {
         "php": ">=7.3",
         "ext-dom": "*"
