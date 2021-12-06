@@ -156,8 +156,12 @@ class Horde_String
         }
 
         /* Try mbstring. */
-        if (Horde_Util::extensionExists('mbstring')) {
-            $out = @mb_convert_encoding($input, $to, self::_mbstringCharset($from));
+        if (Horde_Util::extensionExists('mbstring') && null !== $from = self::_mbstringCharset($from)) {
+            try {
+                $out = mb_convert_encoding($input, $to, $from);
+            } catch (\Error) {
+                $out = false;
+            }
             if (!empty($out)) {
                 return $out;
             }
@@ -870,7 +874,7 @@ class Horde_String
                 }
 
                 do {
-                    $c = ord($text[++$i]);
+                    $c = ord($text[++$i] ?? ''); // If not set, $c will be 20 and run into the false part
                     if (($c < 128) || ($c > 191)) {
                         return false;
                     }
