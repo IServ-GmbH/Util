@@ -265,7 +265,7 @@ class Horde_Domhtml implements Iterator
 
     /**
      */
-    public function current()
+    public function current(): mixed
     {
         if ($this->_iterator instanceof DOMDocument) {
             return $this->_iterator;
@@ -277,7 +277,7 @@ class Horde_Domhtml implements Iterator
 
     /**
      */
-    public function key()
+    public function key(): mixed
     {
         return 0;
     }
