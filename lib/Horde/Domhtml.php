@@ -284,7 +284,7 @@ class Horde_Domhtml implements Iterator
 
     /**
      */
-    public function next()
+    public function next(): void
     {
         /* Iterate in the reverse direction through the node list. This allows
          * alteration of the original list without breaking things (foreach()
@@ -321,14 +321,14 @@ class Horde_Domhtml implements Iterator
 
     /**
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->_iterator = $this->dom;
     }
 
     /**
      */
-    public function valid()
+    public function valid(): bool
     {
         return !is_null($this->_iterator);
     }
